@@ -28,7 +28,7 @@ class EditNoteScreen extends StatelessWidget {
         title:  InkWell(onTap: (){
 
 
-        },child: const Text('Edit Note')),
+        },child: const Text('Edit Contact')),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -41,7 +41,7 @@ class EditNoteScreen extends StatelessWidget {
                 BlocProvider.of<NoteCubit>(context).getAllNote();
                 ScaffoldMessenger.of(context).showSnackBar(
 
-                    const SnackBar(backgroundColor: Colors.green,content: Text('Note updated successfully')),
+                    const SnackBar(backgroundColor: Colors.green,content: Text(' updated successfully')),
               );
             }
             },
@@ -51,16 +51,16 @@ class EditNoteScreen extends StatelessWidget {
                   TextField(
                     controller: titleController,
                     decoration: const InputDecoration(
-                      labelText: 'Note Title',
+                      labelText: 'Name',
                       border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextField(
                     controller: descriptionController,
-                    maxLines: 4,
+                    maxLines: 1,
                     decoration: const InputDecoration(
-                      labelText: 'Note Description',
+                      labelText: 'Phone',
                       border: OutlineInputBorder(),
                     ),
                   ),

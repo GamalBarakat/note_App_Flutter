@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text(
-                'Note',
+                'Contacts',
                 style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
               ),
               backgroundColor: Colors.blueAccent,
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           backgroundColor: Colors.red,
-                          content: Text('Note Deleted'),
+                          content: Text(' Deleted'),
                         ),
                       );
                     },
@@ -88,14 +88,14 @@ class HomeScreen extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: const Text('Add New Note'),
+                      title: const Text('Add New '),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           TextField(
                             controller: titleController,
                             decoration: const InputDecoration(
-                              hintText: 'Enter note title',
+                              hintText: 'Enter Name',
                               border: OutlineInputBorder(),
                             ),
                           ),
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                             controller: descriptionController,
                             maxLines: 2,
                             decoration: const InputDecoration(
-                              hintText: 'Enter note description',
+                              hintText: 'Enter Phone',
                               border: OutlineInputBorder(),
                             ),
                           ),
