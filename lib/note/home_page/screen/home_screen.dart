@@ -15,9 +15,10 @@ import 'edit_note_screen.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  final titleController = TextEditingController();
-  final descriptionController = TextEditingController();
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
 
+  final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -65,16 +66,18 @@ class HomeScreen extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => EditNoteScreen(
                               index: index,
-                              currentTitle: itemBloc.noteList[index]['title'],
-                              currentDescription: itemBloc.noteList[index]['description'],
+                              currentTitle: itemBloc.noteList[index]['name'],
+                              currentDescription: itemBloc.noteList[index]['phone'],
+                              currentEmail:itemBloc.noteList[index]['email'] ,
+
                             ),
                           ),
                         );
                       },
                       child: NoteCard(
-                        title: itemBloc.noteList[index]['title'],
-                        content: itemBloc.noteList[index]['description'],
-                        date:DateFormat('dd/MM/yyyy').format(DateTime.now()),
+                        title: itemBloc.noteList[index]['name'],
+                        content: itemBloc.noteList[index]['phone'],
+
                         backgroundColor: Colors.primaries[index % Colors.primaries.length],
                       ),
                     ),
@@ -93,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           TextField(
-                            controller: titleController,
+                            controller: nameController,
                             decoration: const InputDecoration(
                               hintText: 'Enter Name',
                               border: OutlineInputBorder(),
@@ -101,14 +104,22 @@ class HomeScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           TextField(
-                            controller: descriptionController,
-                            maxLines: 2,
+                            controller: phoneController,
+                            maxLines: 1,
                             decoration: const InputDecoration(
                               hintText: 'Enter Phone',
                               border: OutlineInputBorder(),
                             ),
                           ),
-
+                          const SizedBox(height: 8),
+                          TextField(
+                            controller: emailController,
+                            maxLines: 1,
+                            decoration: const InputDecoration(
+                              hintText: 'Enter Email',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
                         ],
                       ),
                       actions: [
@@ -121,8 +132,9 @@ class HomeScreen extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             itemBloc.addNote(
-                              title: titleController.text,
-                              description: descriptionController.text,
+                              name: nameController.text,
+                              phone:phoneController.text,
+                              email: emailController.text
                             );
                             Navigator.of(context).pop();
                           },

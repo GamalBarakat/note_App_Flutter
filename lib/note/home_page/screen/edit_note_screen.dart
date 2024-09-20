@@ -10,19 +10,20 @@ class EditNoteScreen extends StatelessWidget {
   final int index;
   final String currentTitle;
   final String currentDescription;
-
+  final String currentEmail;
   const EditNoteScreen({
     Key? key,
     required this.index,
     required this.currentTitle,
     required this.currentDescription,
+    required this.currentEmail
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final titleController = TextEditingController(text: currentTitle);
-    final descriptionController = TextEditingController(text: currentDescription);
-
+    final nameController = TextEditingController(text: currentTitle);
+    final phoneController = TextEditingController(text: currentDescription);
+    final emailController = TextEditingController(text: currentDescription);
     return Scaffold(
       appBar: AppBar(
         title:  InkWell(onTap: (){
@@ -49,7 +50,7 @@ class EditNoteScreen extends StatelessWidget {
               return Column(
                 children: [
                   TextField(
-                    controller: titleController,
+                    controller: nameController,
                     decoration: const InputDecoration(
                       labelText: 'Name',
                       border: OutlineInputBorder(),
@@ -57,21 +58,24 @@ class EditNoteScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   TextField(
-                    controller: descriptionController,
+                    controller: phoneController,
                     maxLines: 1,
                     decoration: const InputDecoration(
                       labelText: 'Phone',
                       border: OutlineInputBorder(),
                     ),
                   ),
+
+
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       final itemBloc = BlocProvider.of<NoteCubit>(context);
                       itemBloc.updateNote(
                         index: index,
-                        title: titleController.text,
-                        description: descriptionController.text,
+                        name: nameController.text,
+                        phone: phoneController.text,
+                        email: emailController.text
                       );
                     },
                     style: ElevatedButton.styleFrom(

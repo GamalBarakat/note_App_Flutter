@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class NoteCard extends StatelessWidget {
   final String title;
   final String content;
-  final String date;
+
   final Color backgroundColor;
 
   const NoteCard({
     required this.title,
     required this.content,
-    required this.date,
+
     required this.backgroundColor,
   });
 
@@ -20,47 +20,52 @@ class NoteCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
       ),
-      elevation: 8, // إضافة ظل أقوى
+      elevation: 8,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
+
+            CircleAvatar(
+              backgroundColor: Colors.white.withOpacity(0.2),
+              child: Center(
+                child: Text(
+                  title[0],
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    print('Edit Note');
-                  },
-                  icon: const Icon(Icons.edit, color: Colors.white),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              content,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 8),
-            Text(
-              date,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.white54,
+            const SizedBox(width: 16),
+
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    content,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.white70,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
           ],
@@ -68,6 +73,7 @@ class NoteCard extends StatelessWidget {
       ),
     );
   }
+
 }
 
 

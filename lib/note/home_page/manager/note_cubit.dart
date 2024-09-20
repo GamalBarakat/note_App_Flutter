@@ -14,10 +14,11 @@ class NoteCubit extends Cubit<NoteState> {
 
   }
 
-  void addNote({required String title,required String description})  {
+  void addNote({required String name,required String phone,required String email})  {
     Hive.box('Note').add({
-      'title':title,
-       'description':description,
+      'name':name,
+       'phone':phone,
+      'email':email
 
     });
     getAllNote();
@@ -32,13 +33,15 @@ class NoteCubit extends Cubit<NoteState> {
   }
   void updateNote({
     required int index,
-    required String title,
-    required String description,
+    required String name,
+    required String phone,
+    required String email
   }) {
     // Update the note in Hive
     Hive.box('Note').putAt(index, {
-      'title': title,
-      'description': description,
+      'name':name,
+      'phone':phone,
+      'email':email
     });
     getAllNote();
 
