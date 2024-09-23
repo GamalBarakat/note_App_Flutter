@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'week13/home.dart';
 import 'note/home_page/screen/home_screen.dart';
 import 'note/home_page/screen/widget/note_card.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
 
-      home: HomeScreen(),
+      home: Home(),
     );
   }
 }
